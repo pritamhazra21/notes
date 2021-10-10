@@ -75,7 +75,7 @@ function showNotes() {
   if (notesObj.length != 0) {
     notesElm.innerHTML = html;
   } else {
-    notesElm.innerHTML = `You dont creat any note yet`;
+    notesElm.innerHTML = `You have not created any notes yet`;
   }
 }
 
@@ -123,7 +123,7 @@ function showStarNode() {
   if (count != 0) {
     notesElm.innerHTML = html;
   } else {
-    notesElm.innerHTML = `Click "Star Note" any note to star the note`;
+    notesElm.innerHTML = `Click "Star Note" in any note to star the note`;
   }
 }
 
