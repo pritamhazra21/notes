@@ -133,35 +133,35 @@ function showStarNode() {
 
 // Function to delete a note
 function deleteNote(index) {
+  if (confirm("Do you want to delete the note?")) {
+    let notes = localStorage.getItem("notes");
+    let dateItem = localStorage.getItem("dateItem");
+    let starItem = localStorage.getItem("starItem");
+    if (notes == null) {
+      notesObj = [];
+      dateObj = [];
+      starObj = [];
+    }
+    else {
+      notesObj = JSON.parse(notes);
+      dateObj = JSON.parse(dateItem);
+      starObj = JSON.parse(starItem);
+    }
+    notesObj = notesObj.reverse();
+    dateObj = dateObj.reverse();
+    starObj = starObj.reverse();
 
-  let notes = localStorage.getItem("notes");
-  let dateItem = localStorage.getItem("dateItem");
-  let starItem = localStorage.getItem("starItem");
-  if (notes == null) {
-    notesObj = [];
-    dateObj = [];
-    starObj = [];
+    notesObj.splice(index, 1);
+    dateObj.splice(index, 1);
+    starObj.splice(index, 1);
+
+    notesObj = notesObj.reverse();
+    dateObj = dateObj.reverse();
+    starObj = starObj.reverse();
+    localStorage.setItem("notes", JSON.stringify(notesObj));
+    localStorage.setItem("dateItem", JSON.stringify(dateObj));
+    localStorage.setItem("starItem", JSON.stringify(starObj));
   }
-  else {
-    notesObj = JSON.parse(notes);
-    dateObj = JSON.parse(dateItem);
-    starObj = JSON.parse(starItem);
-  }
-  notesObj = notesObj.reverse();
-  dateObj = dateObj.reverse();
-  starObj = starObj.reverse();
-
-  notesObj.splice(index, 1);
-  dateObj.splice(index, 1);
-  starObj.splice(index, 1);
-
-  notesObj = notesObj.reverse();
-  dateObj = dateObj.reverse();
-  starObj = starObj.reverse();
-  localStorage.setItem("notes", JSON.stringify(notesObj));
-  localStorage.setItem("dateItem", JSON.stringify(dateObj));
-  localStorage.setItem("starItem", JSON.stringify(starObj));
-
   showNotes();
   showStarNode();
 }
